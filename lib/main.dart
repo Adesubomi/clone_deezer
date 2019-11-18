@@ -43,6 +43,7 @@ class Player extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
+
             RecommendedPlaylist(),
           ],
         ),
@@ -175,40 +176,183 @@ class RecommendedPlaylist extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.only(top: 32.0, bottom: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            "Recommended playlists",
-            style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w700),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
+            child: Text(
+              "Recommended playlists",
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
+            ),
           ),
           SingleChildScrollView(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: (() {
                 List<Widget> poles = [];
 
-                for (int i =  0; i < 12; i++) {
-                  poles.add(Padding(
-                    padding: const EdgeInsets.only(
-                      top: 16.0,
-                      right: 16.0,
-                    ),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          width: 144,
-                          height: 144,
-                          decoration: BoxDecoration(
+                List<Map<String, dynamic>> recommended = [
+                  {
+                    "image": "assets/img/art-01.jpg",
+                    "title": "Pop Rewind",
+                    "position": 54.0,
+                    "align": TextAlign.right
+                  },
+                  {
+                    "image": "assets/img/art-02.jpg",
+                    "title": "Piano Ballads",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-03.jpg",
+                    "title": "EDM Pop",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-04.jpg",
+                    "title": "Urban Party Hits",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-05.jpg",
+                    "title": "Dance Pop",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-06.jpg",
+                    "title": "Loves Me Pop",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-07.jpg",
+                    "title": "New Hits SA",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-08.jpg",
+                    "title": "Pop Joy",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-09.jpg",
+                    "title": "Pop All Stars",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                  {
+                    "image": "assets/img/art-10.jpg",
+                    "title": "Acoustic Pop",
+                    "position": 8.0,
+                    "align": TextAlign.center
+                  },
+                ];
+
+                recommended.forEach((item) => poles.add(
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: 16.0,
+                          right: 16.0,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
-                              border: Border.all(color: Colors.black54)),
-                        )
-                      ],
-                    ),
-                  ));
-                }
+                              child: Container(
+                                width: 148,
+                                height: 148,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                child: Stack(
+                                  fit: StackFit.expand,
+                                  children: <Widget>[
+                                    Image.asset(
+                                      item["image"],
+                                      fit: BoxFit.cover,
+                                    ),
+
+                                    /** TITLE DISPLAY */
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          item["title"].toLowerCase(),
+                                          textAlign: item["align"],
+                                          softWrap: true,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+
+                                    /** PLAY BUTTON */
+                                    Positioned(
+                                      left: 12.0,
+                                      bottom: 12.0,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(24.0),
+                                        child: Container(
+                                          width: 28.0,
+                                          height: 28.0,
+                                          child: FlatButton(
+                                            color: Colors.white,
+                                            child: Icon(Icons.play_arrow),
+                                            padding: EdgeInsets.all(0),
+                                            onPressed: () => {},
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
+                            Text(
+                              item["title"],
+                              style: TextStyle(fontSize: 15.0),
+                            ),
+                            SizedBox(
+                              height: 2.0,
+                            ),
+                            Text(
+                              "60 Tracks",
+                              style:
+                                  TextStyle(fontSize: 13.0, color: Colors.grey),
+                            ),
+                            SizedBox(
+                              height: 16.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ));
 
                 return poles;
               })(),
