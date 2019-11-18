@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:deezer_clone/resources/DataMock.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -213,70 +214,7 @@ class RecommendedPlaylist extends StatelessWidget {
               children: (() {
                 List<Widget> poles = [];
 
-                List<Map<String, dynamic>> recommended = [
-                  {
-                    "image": "assets/img/art-01.jpg",
-                    "title": "Pop Rewind",
-                    "position": 54.0,
-                    "align": TextAlign.right
-                  },
-                  {
-                    "image": "assets/img/art-02.jpg",
-                    "title": "Piano Ballads",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-03.jpg",
-                    "title": "EDM Pop",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-04.jpg",
-                    "title": "Urban Party Hits",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-05.jpg",
-                    "title": "Dance Pop",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-06.jpg",
-                    "title": "Loves Me Pop",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-07.jpg",
-                    "title": "New Hits SA",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-08.jpg",
-                    "title": "Pop Joy",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-09.jpg",
-                    "title": "Pop All Stars",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                  {
-                    "image": "assets/img/art-10.jpg",
-                    "title": "Acoustic Pop",
-                    "position": 8.0,
-                    "align": TextAlign.center
-                  },
-                ];
-
-                recommended.forEach((item) => poles.add(
+                DataMock.recommendedPlaylists.forEach((item) => poles.add(
                       Padding(
                         padding: const EdgeInsets.only(
                           top: 16.0,
@@ -356,7 +294,7 @@ class RecommendedPlaylist extends StatelessWidget {
                               height: 2.0,
                             ),
                             Text(
-                              "60 Tracks",
+                              "${item["tracks"]} Tracks",
                               style:
                                   TextStyle(fontSize: 13.0, color: Colors.grey),
                             ),
@@ -417,13 +355,7 @@ class MusicByGenre extends StatelessWidget {
               children: (() {
                 List<Widget> genreWidgets = [];
 
-                List<String> genres = [
-                  "Pop", "Dance & EDM", "R & B", "Electronic", "Rock",
-                  "Blues", "Soul & Funk", "Rap", "African music", "Raggae",
-                  "Soundtracks", "Jazz",
-                ];
-
-                genres.forEach((item) => genreWidgets.add(
+                DataMock.genres.forEach((item) => genreWidgets.add(
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0, right: 16.0),
                       child: Container(
