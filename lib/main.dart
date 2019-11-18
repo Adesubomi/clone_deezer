@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:deezer_clone/resources/DataMock.dart';
 import 'package:flutter/material.dart';
 
