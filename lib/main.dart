@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:deezer_clone/component/AlbumArt.dart';
+import 'package:deezer_clone/component/AlbumCategory.dart';
 import 'package:deezer_clone/resources/DataMock.dart';
 import 'package:flutter/material.dart';
 
@@ -185,53 +186,23 @@ class TabButton extends StatelessWidget {
 }
 
 class RecommendedPlaylist extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Padding(
-      padding: const EdgeInsets.only(top: 32.0, bottom: 20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
-            child: Text(
-              "Recommended playlists",
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
-            ),
-          ),
-          SingleChildScrollView(
-            padding: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: (() {
-                List<Widget> poles = [];
 
-                // item["image"], item["title"], item["align"], item["title"], item["tracks"]
-                DataMock.recommendedPlaylists.forEach((item) {
-                  poles.add(
-                    AlbumArt(
-                      item["image"],
-                      item["title"],
-                      "${item['tracks']} Tracks",
-                    ),
-                  );
-                });
+    List<Widget> albumArts = [];
 
-                return poles;
-              })(),
-            ),
-          ),
-        ],
-      ),
-    );
+    DataMock.recommendedPlaylists.forEach((item) {
+      albumArts.add(
+        AlbumArt(
+          item["image"],
+          item["title"],
+          "${item['tracks']} Tracks",
+        ),
+      );
+    });
+
+    return AlbumCategory("Recommended playlists", albumArts);
   }
 }
 
