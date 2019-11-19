@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:deezer_clone/component/AlbumArt.dart';
 import 'package:deezer_clone/resources/DataMock.dart';
 import 'package:flutter/material.dart';
 
@@ -213,97 +214,16 @@ class RecommendedPlaylist extends StatelessWidget {
               children: (() {
                 List<Widget> poles = [];
 
-                DataMock.recommendedPlaylists.forEach((item) => poles.add(
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 16.0,
-                          right: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Container(
-                                width: 148,
-                                height: 148,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: <Widget>[
-                                    Image.asset(
-                                      item["image"],
-                                      fit: BoxFit.cover,
-                                    ),
-
-                                    /** TITLE DISPLAY */
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(
-                                          item["title"].toLowerCase(),
-                                          textAlign: item["align"],
-                                          softWrap: true,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-
-                                    /** PLAY BUTTON */
-                                    Positioned(
-                                      left: 12.0,
-                                      bottom: 12.0,
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(24.0),
-                                        child: Container(
-                                          width: 28.0,
-                                          height: 28.0,
-                                          child: FlatButton(
-                                            color: Colors.white,
-                                            child: Icon(Icons.play_arrow),
-                                            padding: EdgeInsets.all(0),
-                                            onPressed: () => {},
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8.0,
-                            ),
-                            Text(
-                              item["title"],
-                              style: TextStyle(fontSize: 15.0),
-                            ),
-                            SizedBox(
-                              height: 2.0,
-                            ),
-                            Text(
-                              "${item["tracks"]} Tracks",
-                              style:
-                                  TextStyle(fontSize: 13.0, color: Colors.grey),
-                            ),
-                            SizedBox(
-                              height: 16.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ));
+                // item["image"], item["title"], item["align"], item["title"], item["tracks"]
+                DataMock.recommendedPlaylists.forEach((item) {
+                  poles.add(
+                    AlbumArt(
+                      item["image"],
+                      item["title"],
+                      "${item['tracks']} Tracks",
+                    ),
+                  );
+                });
 
                 return poles;
               })(),
@@ -350,33 +270,35 @@ class MusicByGenre extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisSize: MainAxisSize.max,
-
               children: (() {
                 List<Widget> genreWidgets = [];
 
                 DataMock.genres.forEach((item) => genreWidgets.add(
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16.0, right: 16.0),
-                      child: Container(
-                        width: 148,
-                        height: 68,
-                        decoration: BoxDecoration(
-                          color: Color.fromRGBO( Random().nextInt(155),
-                              Random().nextInt(155), Random().nextInt(155), 1),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Center(
-                          child: Text(
-                            item,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0, right: 16.0),
+                        child: Container(
+                          width: 148,
+                          height: 68,
+                          decoration: BoxDecoration(
+                            color: Color.fromRGBO(
+                                Random().nextInt(155),
+                                Random().nextInt(155),
+                                Random().nextInt(155),
+                                1),
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              item,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                ));
+                    ));
 
                 genreWidgets.add(
                   Padding(
@@ -389,7 +311,10 @@ class MusicByGenre extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 16.0, right: 16.0,),
+                        padding: const EdgeInsets.only(
+                          left: 16.0,
+                          right: 16.0,
+                        ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -404,9 +329,7 @@ class MusicByGenre extends StatelessWidget {
                               ),
                             ),
                             Spacer(),
-                            Icon(
-                              Icons.chevron_right
-                            ),
+                            Icon(Icons.chevron_right),
                           ],
                         ),
                       ),
