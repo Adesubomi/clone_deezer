@@ -4,8 +4,9 @@ class AlbumCategory extends StatelessWidget {
 
   final String title;
   final List<Widget> albumArts;
+  final String viewAllRouteName;
 
-  AlbumCategory(this.title, this.albumArts);
+  AlbumCategory(this.title, this.albumArts, {this.viewAllRouteName=""});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,22 @@ class AlbumCategory extends StatelessWidget {
               left: 20,
               right: 20,
             ),
-            child: Text(
-              this.title,
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
+            child: GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    this.title,
+                    style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w700),
+                  ),
+
+                  (() {
+                    if (this.viewAllRouteName.isNotEmpty) {
+                      return Icon(Icons.chevron_right);
+                    }
+                    return SizedBox.shrink();
+                  })(),
+                ],
+              ),
             ),
           ),
           SingleChildScrollView(

@@ -337,6 +337,8 @@ class RecommendedReleases extends StatelessWidget {
       );
     });
 
-    return AlbumCategory("Recommended releases", albumArts);
+    return AlbumCategory("Recommended releases", albumArts,
+      viewAllRouteName: "recommended/releases",
+    );
   }
 }
