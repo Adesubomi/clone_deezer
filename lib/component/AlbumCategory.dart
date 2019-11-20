@@ -47,6 +47,7 @@ class AlbumCategory extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: this.albumArts,
             ),
           ),

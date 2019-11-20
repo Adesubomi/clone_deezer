@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:deezer_clone/component/AlbumArt.dart';
+import 'package:deezer_clone/component/AlbumArtViewAll.dart';
 import 'package:deezer_clone/component/AlbumCategory.dart';
 import 'package:deezer_clone/resources/DataMock.dart';
 import 'package:flutter/material.dart';
@@ -336,6 +337,8 @@ class RecommendedReleases extends StatelessWidget {
         ),
       );
     });
+    
+    albumArts.add(AlbumArtViewAll());
 
     return AlbumCategory("Recommended releases", albumArts,
       viewAllRouteName: "recommended/releases",
