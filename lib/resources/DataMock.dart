@@ -22,4 +22,15 @@ class DataMock {
     {"image": "assets/img/art-09.jpg", "title": "Pop All Stars", "tracks": Random().nextInt(60), "position": 8.0, "align": TextAlign.center },
     {"image": "assets/img/art-10.jpg", "title": "Acoustic Pop", "tracks": Random().nextInt(60), "position": 8.0, "align": TextAlign.center },
   ];
+
+  static List<Map<String, dynamic>> get recommendedReleases => [
+    {"image": "assets/img/release-01.jpeg", "title": "Up All Night", "artist": "Khalid" },
+    {"image": "assets/img/release-02.jpg", "title": "Graveyard (Acoustic)", "artist": "Halsey" },
+    {"image": "assets/img/release-03.jpg", "title": "Living Proof", "artist": "Camila Cabello" },
+    {"image": "assets/img/release-04.jpg", "title": "The Album", "artist": "Klingande" },
+    {"image": "assets/img/release-05.jpg", "title": "Ain't Deep Enough", "artist": "Autograf" },
+    {"image": "assets/img/release-06.jpeg", "title": "Beast (all as One)", "artist": "Dimitri Vegas & Like Mike" },
+    {"image": "assets/img/release-07.jpeg", "title": "Chixtape 5", "artist": "Tony Lanez" },
+    {"image": "assets/img/release-08.jpeg", "title": "None Of Your Concern", "artist": "Jhene Aiko" },
+  ];
 }

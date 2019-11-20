@@ -49,6 +49,7 @@ class Player extends StatelessWidget {
           children: <Widget>[
             RecommendedPlaylist(),
             MusicByGenre(),
+            RecommendedReleases(),
           ],
         ),
 
@@ -315,5 +316,27 @@ class MusicByGenre extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class RecommendedReleases extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+
+    List<Widget> albumArts = [];
+
+    DataMock.recommendedReleases.forEach((item) {
+      albumArts.add(
+        AlbumArt(
+          item["image"],
+          item["title"],
+          item['artist'],
+          showTitle: false,
+        ),
+      );
+    });
+
+    return AlbumCategory("Recommended releases", albumArts);
   }
 }
